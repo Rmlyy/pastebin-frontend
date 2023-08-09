@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Easily share text online, for free. Create your paste now!"
+    />
+    <meta name="keywords" content="pastebin, sharetext" />
+    <meta name="robots" content="index, follow" />
+    <meta name="msapplication-TileColor" content="#1e88e5" />
+    <meta
+      name="msapplication-TileImage"
+      content="/assets/img/icons/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#1e88e5" />
+    <meta property="og:title" content="Rmly's Pastebin" />
+    <meta
+      property="og:description"
+      content="Easily share text online, for free. Create your paste now!"
+    />
+    <meta
+      property="og:image"
+      content="https://paste.rmly.dev/assets/img/logo.png"
+    />
+    <meta property="og:url" content="https://paste.rmly.dev" />
+    <link rel="canonical" href="https://paste.rmly.dev" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/assets/img/icons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/img/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/assets/img/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/assets/img/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/img/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/assets/img/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/assets/img/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/img/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/img/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/img/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/assets/img/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/img/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <script
+      src="https://kit.fontawesome.com/020fffa6ef.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Rmly's Pastebin | Create Paste</title>
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h2><i class="fa-solid fa-paste"></i> Rmly's Pastebin</h2>
+        <h3>Easily share text online</h3>
+      </hgroup>
+
+      <noscript>
+        <div class="nojs">
+          <h2>JavaScript is disabled in your browser</h2>
+          <p>Please enable JavaScript for this website to work.</p>
+        </div>
+      </noscript>
+
+      <label>
+        Content
+        <textarea
+          id="content"
+          rows="10"
+          placeholder="Your paste's content goes here"
+        ></textarea>
+      </label>
+
+      <div class="grid">
+        <label>
+          Name (Optional)
+          <input
+            type="text"
+            id="name"
+            placeholder="Your paste's name (Optional)"
+          />
+        </label>
+        <label>
+          Password (Optional)
+          <input
+            type="password"
+            id="password"
+            placeholder="Your paste's password (Optional)"
+          />
+        </label>
+
+        <label>
+          Expiry
+          <select id="expiry">
+            <option value="1d">1 Day</option>
+            <option value="1w">1 Week</option>
+            <option value="1mo">1 Month</option>
+            <option value="one-time">One-Time Read</option>
+            <option value="">Never</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="pasteBtn" type="submit" onclick="createPaste()">
+        <i class="fa-solid fa-paper-plane"></i> Paste!
+      </button>
+
+      <div id="error"></div>
+      <div id="result"></div>
+
+      <footer>
+        <p>
+          <small>
+            <i class="fa-solid fa-gavel"></i>
+            <a href="/tos">Terms of Service</a>
+          </small>
+          <br />
+          <small
+            ><i class="fa-solid fa-shield-halved"></i>
+            <a href="/privacy">Privacy Policy</a></small
+          >
+          <br />
+          <small>
+            <i class="fa-solid fa-book"></i>
+            <a href="/docs">API Documentation</a>
+          </small>
+          <br />
+          <small><i class="fa-solid fa-bolt"></i> Powered by</small>
+          <a href="//vanilla-js.com" target="_blank">
+            <img src="/assets/img/button.png" alt="Vanilla JS" />
+          </a>
+        </p>
+      </footer>
+    </main>
+    <script src="/assets/js/createPaste.js"></script>
+    <script src="/assets/js/utils.js"></script>
+  </body>
+</html>

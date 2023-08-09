@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interested in using our API in your application? Read the API documentation!"
+    />
+    <meta name="keywords" content="pastebin, sharetext, api, apidocs" />
+    <meta name="robots" content="index, follow" />
+    <meta name="msapplication-TileColor" content="#1e88e5" />
+    <meta
+      name="msapplication-TileImage"
+      content="/assets/img/icons/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#1e88e5" />
+    <meta property="og:title" content="Rmly's Pastebin | API Documentation" />
+    <meta
+      property="og:description"
+      content="Interested in using our API in your application? Read the API documentation!"
+    />
+    <meta
+      property="og:image"
+      content="https://paste.rmly.dev/assets/img/logo.png"
+    />
+    <meta property="og:url" content="https://paste.rmly.dev/docs" />
+    <link rel="canonical" href="https://paste.rmly.dev/docs" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/assets/img/icons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/img/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/assets/img/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/assets/img/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/img/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/assets/img/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/assets/img/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/img/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/img/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/img/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/assets/img/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/img/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <link rel="stylesheet" href="/assets/prism/prism.css" />
+    <script
+      src="https://kit.fontawesome.com/020fffa6ef.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Rmly's Pastebin | API Documentation</title>
+  </head>
+  <body>
+    <main class="container">
+      <hgroup>
+        <h2><i class="fa-solid fa-paste"></i> Rmly's Pastebin</h2>
+        <h3>Easily share text online</h3>
+      </hgroup>
+
+      <noscript>
+        <div class="nojs">
+          <h2>JavaScript is disabled in your browser</h2>
+          <p>Please enable JavaScript for this service to work.</p>
+        </div>
+      </noscript>
+
+      <h1>API Documentation</h1>
+      <p>
+        Hello and welcome to the API Documentation! This page provides detailed
+        information on how to interact with our API along with some examples.
+      </p>
+      <p>Fun fact: This website is also interacting with the API :)</p>
+
+      <h2>Endpoints</h2>
+      <p>
+        Here are the API endpoints along with the request methods and with their
+        parameters.
+      </p>
+
+      <p>
+        Wait! Before we get to that, we should know some general information
+        about the API that applies to all endpoints, right?
+      </p>
+
+      <ul>
+        <li>
+          The base URL of the API is:
+          <code>https://paste-api.rmly.dev</code>
+        </li>
+        <li>All endpoints <b>exclusively</b> accept JSON bodies.</li>
+      </ul>
+
+      <p>Okay! Now let's get to the endpoints:</p>
+      <ul>
+        <li>
+          <b>POST</b> <code>/createPaste</code> - creates a paste
+          <ul>
+            <li>Max requests: 50 in 10 minutes</li>
+            <li>
+              <code>name</code> - the paste name (optional)
+              <br />
+              Accepts: <code>[a-Z, A-Z, 0-9]</code>
+              <br />
+              Length: <code><=50</code>
+              <br />
+              Default:
+              <code>[randomAdjective]-[randomNoun]-[randomNumber]</code>
+            </li>
+            <li>
+              <code>password</code> - the paste password (optional)
+              <br />
+              Accepts: <code>any</code>
+              <br />
+              Length: <code><=32</code>
+              <br />
+              Default: <code>null</code> (The paste has no password)
+            </li>
+            <li>
+              <code>content</code> - the paste content (required)
+              <br />
+              Accepts: <code>any</code>
+              <br />
+              Length: <code><=100.000</code>
+            </li>
+            <li>
+              <code>token</code> - whether or not or not to generate a token
+              (optional)
+              <br />
+              Accepts: <code>true / false</code>
+              <br />
+              Default: <code>false</code>
+            </li>
+            <li>
+              <code>expiresIn</code> - when the paste will expire from now
+              (optional)
+              <br />
+              Accepts: <code>one-time / 1d / 1w / 1mo</code>
+              <br />
+              Default: <code>null</code> (the paste will never expire)
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <b>POST</b> <code>/generateToken</code> - generates a temporary token
+          for a passworded paste
+          <ul>
+            <li>Max requests: 100 in 10 minutes</li>
+            <li>
+              <code>id</code> - the paste id (required)
+              <br />
+              Accepts: <code>UUIDv4</code>
+            </li>
+            <li>
+              <code>authorization</code> - authorization to view paste
+              (required, request header)
+              <br />
+              Accepts: <code>[pastePassword]</code>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <b>GET</b> <code>/getPaste</code> - gets a paste
+          <ul>
+            <li>Max requests: 100 in 10 minutes</li>
+            <li>
+              <code>id</code> - the paste id (required, URL query param)
+              <br />
+              Accepts: <code>UUIDv4</code>
+            </li>
+            <li>
+              <code>authorization</code> - authorization to view paste (required
+              if paste passworded, request header)
+              <br />
+              Accepts: <code>[pastePassword]</code> or
+              <code>Bearer [pasteToken]</code>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <b>GET</b> <code>/getPasteInfo</code> - gets information about a paste
+          <ul>
+            <li>Max requests: 100 in 10 minutes</li>
+            <li>
+              <code>id</code> - the paste id (required, URL query param)
+              <br />
+              Accepts: <code>UUIDv4</code>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+      <h2>Examples</h2>
+      <p>How about some examples?</p>
+
+      <p>
+        Creating a paste in JavaScript using the
+        <a
+          href="//developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+          target="_blank"
+          >Fetch API</a
+        >:
+      </p>
+      <pre
+        class="line-numbers"
+      ><code class="language-javascript">async function createPaste(name, content, password, expiresIn) {
+  const requestBody = {
+    name: name,
+    content: content,
+    password: password,
+    expiresIn: expiresIn,
+    token: false,
+  }
+
+  const requestConfig = {
+    method: 'post',
+    body: JSON.stringify(requestBody),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+
+  try {
+    const response = await fetch(
+      'https://paste-api.rmly.dev/createPaste',
+      requestConfig
+    )
+    const result = await response.json()
+
+    if (!response.ok) {
+      console.error('Error creating paste:', result)
+      return
+    }
+
+    console.log('Paste created successfully:', result)
+  } catch (e) {
+    console.error('Error creating paste:', e)
+  }
+}
+
+const pasteName = 'myNewPaste'
+const pasteContent = 'Hello, World!'
+const pastePassword = 'MySuperSecretPassword'
+const pasteExpiresIn = '1d'
+
+createPaste(pasteName, pasteContent, pastePassword, pasteExpiresIn)
+</code></pre>
+
+      <p>
+        The code above creates a paste named
+        <code>myNewPaste</code>. It includes the content
+        <code>Hello, World!</code>, a password of
+        <code>MySuperSecretPassword</code>, and an expiration set to 1 day.
+      </p>
+
+      <p>Example response:</p>
+      <pre
+        class="line-numbers"
+      ><code class="language-javascript">Paste created successfully: {
+  status: 'success',
+  id: '1cc107a2-ac32-47ac-a35b-312450170020',
+  name: 'myNewPaste',
+  passworded: true,
+  createdAt: '2023-08-09T13:25:34.931Z',
+  expiresAt: '2023-08-10T13:25:34.931Z'
+}
+</code></pre>
+
+      <p>
+        Getting a paste in JavaScript using the
+        <a
+          href="//developer.mozilla.org/en-US/docs/Web/API/Fetch_API"
+          target="_blank"
+          >Fetch API</a
+        >:
+      </p>
+
+      <pre
+        class="line-numbers"
+      ><code class="language-javascript">async function getPaste(id, password, token) {
+  const authorization = password ?? `Bearer ${token}`
+
+  const requestConfig = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: authorization,
+    },
+  }
+
+  try {
+    const response = await fetch(
+      `https://paste-api.rmly.dev/getPaste?id=${id}`,
+      requestConfig
+    )
+    const result = await response.json()
+
+    if (!response.ok) {
+      console.error('Error getting paste:', result)
+      return
+    }
+
+    console.log('Got paste successfully:', result)
+  } catch (e) {
+    console.error('Error getting paste:', e)
+  }
+}
+
+const pasteId = '1cc107a2-ac32-47ac-a35b-312450170020'
+const pastePassword = 'MySuperSecretPassword'
+getPaste(pasteId, pastePassword)
+</code></pre>
+
+      <p>
+        The code above retrieves a paste with the ID
+        <code>1cc107a2-ac32-47ac-a35b-312450170020</code> and uses the password
+        <code>MySuperSecretPassword</code>.
+      </p>
+
+      <p>Example response:</p>
+      <pre
+        class="line-numbers"
+      ><code class="language-javascript">Got paste successfully: {
+  status: 'success',
+  id: '1cc107a2-ac32-47ac-a35b-312450170020',
+  name: 'myNewPaste',
+  createdAt: '2023-08-09T13:25:34.000Z',
+  expiresAt: '2023-08-10T13:25:34.931Z',
+  content: 'Hello, World!'
+}
+</code></pre>
+
+      <footer>
+        <p>
+          <small>
+            <i class="fa-solid fa-gavel"></i>
+            <a href="/tos">Terms of Service</a>
+          </small>
+          <br />
+          <small
+            ><i class="fa-solid fa-shield-halved"></i>
+            <a href="/privacy">Privacy Policy</a></small
+          >
+          <br />
+          <small>
+            <i class="fa-solid fa-book"></i>
+            <a href="/docs">API Documentation</a>
+          </small>
+          <br />
+          <small><i class="fa-solid fa-bolt"></i> Powered by</small>
+          <a href="//vanilla-js.com" target="_blank">
+            <img src="/assets/img/button.png" alt="Vanilla JS" />
+          </a>
+        </p>
+      </footer>
+    </main>
+
+    <script src="/assets/prism/prism.js"></script>
+  </body>
+</html>

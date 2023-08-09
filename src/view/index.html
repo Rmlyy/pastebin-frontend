@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="View a paste using its ID." />
+    <meta name="keywords" content="pastebin, sharetext" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="msapplication-TileColor" content="#1e88e5" />
+    <meta
+      name="msapplication-TileImage"
+      content="/assets/img/icons/ms-icon-144x144.png"
+    />
+    <meta name="theme-color" content="#1e88e5" />
+    <meta property="og:title" content="Rmly's Pastebin | View Paste" />
+    <meta property="og:description" content="View a paste using its ID." />
+    <meta
+      property="og:image"
+      content="https://paste.rmly.dev/assets/img/logo.png"
+    />
+    <meta property="og:url" content="https://paste.rmly.dev/view" />
+    <link rel="canonical" href="https://paste.rmly.dev/view" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="/assets/img/icons/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="/assets/img/icons/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="/assets/img/icons/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="/assets/img/icons/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/assets/img/icons/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/assets/img/icons/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/assets/img/icons/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/assets/img/icons/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/assets/img/icons/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/assets/img/icons/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/assets/img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="/assets/img/icons/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/img/icons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <link rel="stylesheet" href="/assets/prism/prism.css" />
+    <script
+      src="https://kit.fontawesome.com/020fffa6ef.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Rmly's Pastebin | View Paste</title>
+  </head>
+  <body>
+    <main class="container">
+      <dialog id="modal">
+        <article id="modalArticle">
+          <h3 id="modalHeader">Please wait</h3>
+          <p id="modalContent">
+            Please wait while we're getting the paste's content...
+          </p>
+        </article>
+      </dialog>
+
+      <hgroup>
+        <h2><i class="fa-solid fa-paste"></i> Rmly's Pastebin</h2>
+        <h3>
+          Viewing paste <span id="pasteName"></span>
+          <br />
+          ID: <span id="pasteId"></span>
+          <br />
+          Created at: <span id="pasteCreatedAt"></span>
+          <br />
+          Expires at: <span id="pasteExpiresAt"></span>
+        </h3>
+      </hgroup>
+
+      <noscript>
+        <div class="nojs">
+          <h2>JavaScript is disabled in your browser</h2>
+          <p>Please enable JavaScript for this website to work.</p>
+        </div>
+      </noscript>
+
+      <div style="margin-top: 1.5vw">
+        <label>
+          <i class="fa-solid fa-wand-sparkles"></i> Syntax Highlighting
+          <div>
+            <select
+              id="lang"
+              onchange="syntaxHighlight()"
+              style="margin-top: 5px; width: 20vw"
+            >
+              <option value="none" selected>None</option>
+              <option value="html">HTML</option>
+              <option value="css">CSS</option>
+              <option value="javascript">JavaScript</option>
+              <option value="typescript">TypeScript</option>
+              <option value="java">Java</option>
+              <option value="python">Python</option>
+              <option value="c">C</option>
+              <option value="csharp">C#</option>
+              <option value="cpp">C++</option>
+              <option value="rust">Rust</option>
+              <option value="go">Go</option>
+              <option value="php">PHP</option>
+              <option value="zig">Zig</option>
+              <option value="sql">SQL</option>
+              <option value="markdown">Markdown</option>
+              <option value="json">JSON</option>
+              <option value="yaml">YAML</option>
+              <option value="toml">TOML</option>
+              <option value="regex">Regex</option>
+              <option value="bash">Bash</option>
+              <option value="batch">Batch</option>
+              <option value="powershell">Powershell</option>
+            </select>
+          </div>
+        </label>
+      </div>
+
+      <div class="buttons">
+        <a role="button" href="/"><i class="fa-solid fa-house"></i> Home</a>
+        <a role="button" onclick="dl()" href="#download"
+          ><i class="fa-solid fa-download"></i> Download</a
+        >
+      </div>
+
+      <pre
+        class="line-numbers"
+      ><code id="pasteContent" class="language-none"></code></pre>
+
+      <div id="error"></div>
+      <div id="result"></div>
+
+      <footer>
+        <p>
+          <small>
+            <i class="fa-solid fa-gavel"></i>
+            <a href="/tos">Terms of Service</a>
+          </small>
+          <br />
+          <small
+            ><i class="fa-solid fa-shield-halved"></i>
+            <a href="/privacy">Privacy Policy</a></small
+          >
+          <br />
+          <small>
+            <i class="fa-solid fa-book"></i>
+            <a href="/docs">API Documentation</a>
+          </small>
+          <br />
+          <small><i class="fa-solid fa-bolt"></i> Powered by</small>
+          <a href="//vanilla-js.com" target="_blank">
+            <img src="/assets/img/button.png" alt="Vanilla JS" />
+          </a>
+        </p>
+      </footer>
+    </main>
+    <script src="/assets/js/utils.js"></script>
+    <script src="/assets/prism/prism.js"></script>
+    <script src="/assets/js/syntaxHighlight.js"></script>
+    <script src="/assets/js/viewPaste.js"></script>
+  </body>
+</html>

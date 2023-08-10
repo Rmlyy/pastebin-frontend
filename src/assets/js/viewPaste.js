@@ -128,7 +128,7 @@ function dl() {
     pasteNameElem.innerText = res.paste.name
     pasteIdElem.innerText = res.paste.id
     pasteCreatedAtElem.innerText = formatDate(res.paste.createdAt)
-    pasteExpiresAtElem.innerText = formatDate(res.paste.expiresAt)
+    pasteExpiresAtElem.innerText = formatDate(res.paste.expiresAt) || 'never'
     pasteContentElem.innerHTML = escapeHtml(res.paste.content)
     syntaxHighlight()
 

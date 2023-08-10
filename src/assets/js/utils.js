@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://127.0.0.1:9102'
+const API_BASE_URL = 'https://paste-api.rmly.dev'
 const MAX_PASTE_LENGTH = 100000
 
 const errorElem = document.getElementById('error')

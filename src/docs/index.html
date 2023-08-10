@@ -255,6 +255,20 @@
         </li>
       </ul>
 
+      <ul>
+        <li>
+          <b>GET</b> <code>/getPublicPastes</code> - gets the public pastes
+          <ul>
+            <li>Max requests: 100 in 10 minutes</li>
+            <li>
+              <code>page</code> - the page number (required, URL query param)
+              <br />
+              Accepts: <code>[pageNumber]</code>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
       <h2>Examples</h2>
       <p>How about some examples?</p>
 
@@ -397,15 +411,17 @@ getPaste(pasteId, pastePassword)
       <footer>
         <p>
           <small>
+            <i class="fa-solid fa-paste"></i>
+            <a href="/pastes">Public Pastes</a>
+          </small>
+          <small>
             <i class="fa-solid fa-gavel"></i>
             <a href="/tos">Terms of Service</a>
           </small>
-          <br />
           <small
             ><i class="fa-solid fa-shield-halved"></i>
             <a href="/privacy">Privacy Policy</a></small
           >
-          <br />
           <small>
             <i class="fa-solid fa-book"></i>
             <a href="/docs">API Documentation</a>

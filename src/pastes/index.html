@@ -3,29 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Authenticate to view a passworded paste using its password"
-    />
+    <meta name="description" content="Here you can view the public pastes." />
     <meta name="keywords" content="pastebin, sharetext" />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow" />
     <meta name="msapplication-TileColor" content="#1e88e5" />
     <meta
       name="msapplication-TileImage"
       content="/assets/img/icons/ms-icon-144x144.png"
     />
     <meta name="theme-color" content="#1e88e5" />
-    <meta property="og:title" content="Rmly's Pastebin | Authenticate" />
+    <meta property="og:title" content="Rmly's Pastebin" />
     <meta
       property="og:description"
-      content="Authenticate to view a passworded paste using its password"
+      content="Here you can view the public pastes."
     />
     <meta
       property="og:image"
       content="https://paste.rmly.dev/assets/img/logo.png"
     />
-    <meta property="og:url" content="https://paste.rmly.dev/auth" />
-    <link rel="canonical" href="https://paste.rmly.dev/auth" />
+    <meta property="og:url" content="https://paste.rmly.dev/pastes" />
+    <link rel="canonical" href="https://paste.rmly.dev/pastes" />
     <link
       rel="apple-touch-icon"
       sizes="57x57"
@@ -105,21 +102,12 @@
       src="https://kit.fontawesome.com/020fffa6ef.js"
       crossorigin="anonymous"
     ></script>
-    <title>Rmly's Pastebin | Authenticate</title>
+    <title>Rmly's Pastebin | Public Pastes</title>
   </head>
   <body>
     <main class="container">
-      <dialog id="modal">
-        <article id="modalArticle">
-          <h3 id="modalHeader">Please wait</h3>
-          <p id="modalContent">
-            Please wait while we're getting the paste's content...
-          </p>
-        </article>
-      </dialog>
-
       <hgroup>
-        <h2>Rmly's Pastebin</h2>
+        <h2><i class="fa-solid fa-paste"></i> Rmly's Pastebin</h2>
         <h3>Easily share text online</h3>
       </hgroup>
 
@@ -129,17 +117,33 @@
           <p>Please enable JavaScript for this website to work.</p>
         </div>
       </noscript>
-    </main>
 
-    <div class="container">
-      <label>
-        Paste Password
-        <input type="password" id="password" placeholder="Password" />
-      </label>
+      <h2>Public Pastes</h2>
 
-      <button type="submit" id="authBtn" onclick="auth()">
-        <i class="fa-solid fa-lock-open"></i> Auth!
-      </button>
+      <table id="table" role="grid">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Expires At</th>
+            <th scope="col">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> View
+            </th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <p>
+        Current page: <span id="currPage"></span> /
+        <span id="totalPages"></span>
+      </p>
+      <a onclick="nextPage()" href="#next" role="button">
+        <i class="fa-solid fa-forward"></i> Next page
+      </a>
+      <a onclick="previousPage()" href="#previous" role="button">
+        <i class="fa-solid fa-backward"></i> Previous page
+      </a>
 
       <div id="error"></div>
       <div id="result"></div>
@@ -169,8 +173,8 @@
           </a>
         </p>
       </footer>
-    </div>
+    </main>
     <script src="/assets/js/utils.js"></script>
-    <script src="/assets/js/authPaste.js"></script>
+    <script src="/assets/js/publicPastes.js"></script>
   </body>
 </html>

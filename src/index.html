@@ -160,6 +160,15 @@
         </label>
       </div>
 
+      <label style="margin-bottom: 0.5%">
+        Public
+        <input
+          data-tooltip="If a paste is public, it will be shown on the pastes page. Public pastes can't be passworded."
+          type="checkbox"
+          id="public"
+          checked
+        />
+      </label>
       <button id="pasteBtn" type="submit" onclick="createPaste()">
         <i class="fa-solid fa-paper-plane"></i> Paste!
       </button>
@@ -170,15 +179,17 @@
       <footer>
         <p>
           <small>
+            <i class="fa-solid fa-paste"></i>
+            <a href="/pastes">Public Pastes</a>
+          </small>
+          <small>
             <i class="fa-solid fa-gavel"></i>
             <a href="/tos">Terms of Service</a>
           </small>
-          <br />
           <small
             ><i class="fa-solid fa-shield-halved"></i>
             <a href="/privacy">Privacy Policy</a></small
           >
-          <br />
           <small>
             <i class="fa-solid fa-book"></i>
             <a href="/docs">API Documentation</a>

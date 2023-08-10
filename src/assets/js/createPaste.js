@@ -2,6 +2,7 @@ const pasteContentElem = document.getElementById('content')
 const pasteNameElem = document.getElementById('name')
 const pastePassElem = document.getElementById('password')
 const pasteExpiryElem = document.getElementById('expiry')
+const pastePublicElem = document.getElementById('public')
 
 document.addEventListener('keypress', (event) => {
   if (event.key === 'Enter') {
@@ -28,6 +29,7 @@ async function createPaste() {
     password: pastePassElem?.value,
     expiresIn: pasteExpiryElem.value,
     token: true,
+    public: pastePublicElem?.value === 'on' ? true : false,
   }
 
   const reqConf = {

@@ -5,6 +5,7 @@ const pasteNameElem = document.getElementById('pasteName')
 const pasteIdElem = document.getElementById('pasteId')
 const pasteCreatedAtElem = document.getElementById('pasteCreatedAt')
 const pasteExpiresAtElem = document.getElementById('pasteExpiresAt')
+const pastePublicElem = document.getElementById('pastePublic')
 const fileExts = {
   none: 'txt',
   html: 'html',
@@ -129,6 +130,7 @@ function dl() {
     pasteIdElem.innerText = res.paste.id
     pasteCreatedAtElem.innerText = formatDate(res.paste.createdAt)
     pasteExpiresAtElem.innerText = formatDate(res.paste.expiresAt) || 'never'
+    pastePublicElem.innerText = res.paste.public ? 'yes' : 'no'
     pasteContentElem.innerHTML = escapeHtml(res.paste.content)
     syntaxHighlight()
 

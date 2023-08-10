@@ -38,10 +38,8 @@ async function getPublicPastes(page) {
   }
 
   pastes.forEach((paste) => {
-    paste.expiresAt = paste.expiresAt
-      ? new Date(paste.expiresAt).toLocaleString()
-      : 'never'
-    paste.createdAt = new Date(paste.createdAt).toLocaleString()
+    paste.expiresAt = formatDate(paste.expiresAt) || 'never'
+    paste.createdAt = formatDate(paste.createdAt)
 
     const tableRow = tableBody.insertRow()
     const viewCell = tableRow.insertCell(0)

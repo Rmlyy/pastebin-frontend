@@ -29,7 +29,7 @@ async function createPaste() {
     password: pastePassElem?.value,
     expiresIn: pasteExpiryElem.value,
     token: true,
-    public: pastePublicElem?.value === 'on' ? true : false,
+    public: pastePublicElem.checked,
   }
 
   const reqConf = {

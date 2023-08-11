@@ -357,12 +357,10 @@ createPaste(pasteName, pasteContent, pastePassword, pasteExpiresIn)
       <pre
         class="line-numbers"
       ><code class="language-javascript">async function getPaste(id, password, token) {
-  const authorization = password ?? `Bearer ${token}`
-
   const requestConfig = {
     headers: {
       'Content-Type': 'application/json',
-      Authorization: authorization,
+      Authorization: password,
     },
   }
 
